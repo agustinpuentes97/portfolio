@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PROJECTS } from "../data/projects";
 import { ABOUT } from "../data/about";
 import { I18N } from "../data/i18n";
@@ -16,6 +16,7 @@ const Moon = () => (
 );
 
 export default function Portfolio() {
+  const ovRef = useRef(null);
   const [view, setView] = useState("works");
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(0); // se conserva al cerrar para que el fade-out no quede vacío
@@ -34,6 +35,11 @@ export default function Portfolio() {
     addEventListener("keydown", onKey);
     return () => removeEventListener("keydown", onKey);
   }, []);
+
+  // Volver arriba del todo cada vez que se abre un proyecto
+  useEffect(() => {
+    if (open && ovRef.current) ovRef.current.scrollTop = 0;
+  }, [open, idx]);
 
   // Tema claro / oscuro (por defecto claro)
   useEffect(() => {
@@ -112,7 +118,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <div className="ov" onClick={e => e.target === e.currentTarget && setOpen(false)}>
+      <div className="ov" ref={ovRef} onClick={e => e.target === e.currentTarget && setOpen(false)}>
         <div className="panel">
           <p className="pc"><b>{cur.client}</b><br />{pick(cur.title)}</p>
           <p className="pr">{pick(cur.roles)} {cur.year}</p>
