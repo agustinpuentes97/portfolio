@@ -17,8 +17,8 @@ export const ABOUT = {
     { label: "How I work", text: "I work through research, experimentation and collaboration. I start by understanding the context, the problem and what makes each project unique. From there, I develop concepts, references and a visual language that can translate consistently across different media. I enjoy turning ideas into structured creative systems. My approach combines creative direction, design, audiovisual production, technology and AI to develop solutions that are both conceptually strong and visually relevant." },
   ],
   experience: [
-    { company: "Owlbox", role: "Creative Coordinator", years: "2026 / Present" },
     { company: "wewant studio", role: "Creative Director", years: "2020 / Present" },
+    { company: "Owlbox", role: "Creative Coordinator", years: "April 2026 / September 2026" },
     { company: "Fiat Armada", role: "Paid Media", years: "2019 / 2020" },
   ],
   skills: [
